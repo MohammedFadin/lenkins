@@ -1,21 +1,11 @@
-#!/usr/bin/env groovy
-
-node('master') {
-    try {
+pipeline {
+    agnet { docker {image'node:6.3'}}
+    stages {
         stage('build') {
-            checkout scm
-
-            sh "npm i"
+            steps {
+                sh 'echo "build stage started"'
+                sh 'npm --version'
+            }
         }
-
-        stage("test") {
-            echo "test success"
-        }
-
-        stage("deploy") {
-            sh "npm start"
-        }
-    } catch {
-        sh "echo 'we caught something'"
     }
 }
