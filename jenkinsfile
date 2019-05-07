@@ -1,0 +1,21 @@
+#!/usr/bin/env groovy
+
+node('master') {
+    try {
+        stage('build') {
+            checkout scm
+
+            sh "npm i"
+        }
+
+        stage("test") {
+            echo "test success"
+        }
+
+        stage("deploy") {
+            sh "npm start"
+        }
+    } catch {
+        sh "echo 'we caught something'"
+    }
+}
