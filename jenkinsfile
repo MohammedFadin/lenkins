@@ -1,28 +1,21 @@
-def appName
-appName = "MyNodeApp"
 pipeline {
-    agent any
-// Fetching nodejs from pre-defined configuration
-    tools {nodejs "node"}
-    stages {
-            stage('Build stage') {
-                steps{
-                    echo "Checking out SCM"
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/MohammedFadin/lenkins.git']]])
-                    sh "npm i"
-                    
-                }
-            }
-            stage('Running Stage') {
-                steps{
-                    echo "Running App Name: $appName "
-                    sh "npm test"
-                }
-            }
-            stage('Testing stage') {
-                steps{
-                    sh "curl localhost:3000"
-                }
-            }
+    currentBuild.result = "SUCCESS"
+
+    try {
+        stage('Checkout') {
+            checkout scm
         }
     }
+
+    stage('Test') {
+        steps{
+        env.NODE_ENV = "test"
+        print "Running Environment is: ${env.NODE_ENV}"
+
+        sh 'node -v'
+        sh 'npm prune'
+        sh 'npm i'
+        sh 'npm test'
+        }
+    }
+}
