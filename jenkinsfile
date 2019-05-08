@@ -1,5 +1,5 @@
 pipeline {
-    def currentBuild
+    //def currentBuild
     agent any
 
     stages{
