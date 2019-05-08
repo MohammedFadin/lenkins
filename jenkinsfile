@@ -6,7 +6,6 @@ pipeline {
         stage('Checkout') {
             steps{
                 checkout scm
-                currentBuild = "SUCCESS"
             }
         }
         stage('Test') {
