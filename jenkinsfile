@@ -1,10 +1,9 @@
 pipeline {
-    agnet { docker {image'node:6.3'}}
+    agent any
     stages {
-        stage('build') {
-            steps {
-                sh 'echo "build stage started"'
-                sh 'npm --version'
+        stage('Build Stage') {
+            steps{
+                echo "Im in building process"
             }
         }
     }
