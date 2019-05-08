@@ -4,9 +4,11 @@ pipeline {
 
     stages{
         stage('Checkout') {
-            checkout scm
+            steps{
+                checkout scm
+            }
         }
-            currentBuild = "SUCCESS"
+        currentBuild = "SUCCESS"
         stage('Test') {
             steps{
                 env.NODE_ENV = "test"
