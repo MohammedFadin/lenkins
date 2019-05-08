@@ -1,5 +1,5 @@
 pipeline {
-    def currentBuild.result
+    def currentBuild
     agent any
 
     try {
