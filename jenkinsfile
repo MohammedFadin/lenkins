@@ -2,7 +2,7 @@ pipeline {
     def currentBuild
     agent any
 
-    try {
+    retry(3) {
         stages{
                     stage('Checkout') {
             checkout scm
