@@ -1,4 +1,4 @@
-def currentBuild.result
+def currentBuild
 pipeline {
     agent any
     currentBuild = "SUCCESS"
