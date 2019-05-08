@@ -20,10 +20,5 @@ pipeline {
         }
     }
         }
-    } catch (error) {
-        currentBuild = "FAILURE"
-
-        print "There is an error"
-        throw error
     }
 }
