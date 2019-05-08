@@ -1,7 +1,7 @@
 pipeline {
-    //def currentBuild
+    //fdef currentBuild
     agent any
-
+    tools {nodejs "node"}
     stages{
         stage('Checkout') {
             steps{
