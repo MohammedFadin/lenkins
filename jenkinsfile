@@ -2,21 +2,21 @@ pipeline {
     def currentBuild
     agent any
 
-        stages{
-                    stage('Checkout') {
+    stages{
+        stage('Checkout') {
             checkout scm
         }
-    currentBuild = "SUCCESS"
-    stage('Test') {
-        steps{
-        env.NODE_ENV = "test"
-        print "Running Environment is: ${env.NODE_ENV}"
+            currentBuild = "SUCCESS"
+        stage('Test') {
+            steps{
+                env.NODE_ENV = "test"
+                print "Running Environment is: ${env.NODE_ENV}"
 
-        sh 'node -v'
-        sh 'npm prune'
-        sh 'npm i'
-        sh 'npm test'
+                sh 'node -v'
+                sh 'npm prune'
+                sh 'npm i'
+                sh 'npm test'
+            }
         }
     }
-        }
 }
