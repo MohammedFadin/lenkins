@@ -1,4 +1,5 @@
-node('node') {
+def currentBuild.result
+pipeline {
     agent any
     currentBuild.result = "SUCCESS"
 
@@ -19,6 +20,8 @@ node('node') {
         }
     }
     } catch (error) {
+        currentBuild.result = "FAILURE"
+
         print "There is an error"
         throw error
     }
