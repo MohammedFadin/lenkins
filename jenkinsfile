@@ -6,11 +6,12 @@ pipeline {
         stage('Checkout') {
             steps{
                 checkout scm
+                // currentBuild = "SUCCESS"
             }
         }
         stage('Test') {
             steps{
-                env.NODE_ENV = "test"
+                // env.NODE_ENV = "test"
                 print "Running Environment is: ${env.NODE_ENV}"
 
                 sh 'node -v'
