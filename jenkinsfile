@@ -1,7 +1,7 @@
-def currentBuild
 pipeline {
+    def currentBuild.result
     agent any
-    currentBuild = "SUCCESS"
+    currentBuild.result = "SUCCESS"
 
     try {
         stage('Checkout') {
@@ -20,7 +20,7 @@ pipeline {
         }
     }
     } catch (error) {
-        currentBuild = "FAILURE"
+        currentBuild.result = "FAILURE"
 
         print "There is an error"
         throw error
