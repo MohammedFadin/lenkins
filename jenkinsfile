@@ -5,6 +5,8 @@ pipeline {
         stage('Checkout') {
             checkout scm
         }
+    } catch(error) {
+        print "error is ${error}"
     }
 
     stage('Test') {
