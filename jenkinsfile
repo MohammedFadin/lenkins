@@ -1,4 +1,4 @@
-pipeline {
+node('node') {
     agent any
     currentBuild.result = "SUCCESS"
 
@@ -6,9 +6,6 @@ pipeline {
         stage('Checkout') {
             checkout scm
         }
-    } catch(error) {
-        print "error is ${error}"
-    }
 
     stage('Test') {
         steps{
@@ -20,5 +17,9 @@ pipeline {
         sh 'npm i'
         sh 'npm test'
         }
+    }
+    } catch (error) {
+        print "There is an error"
+        throw error
     }
 }
