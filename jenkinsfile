@@ -1,13 +1,12 @@
 pipeline {
     def currentBuild.result
     agent any
-    currentBuild.result = "SUCCESS"
 
     try {
         stage('Checkout') {
             checkout scm
         }
-
+    currentBuild = "SUCCESS"
     stage('Test') {
         steps{
         env.NODE_ENV = "test"
@@ -20,7 +19,7 @@ pipeline {
         }
     }
     } catch (error) {
-        currentBuild.result = "FAILURE"
+        currentBuild = "FAILURE"
 
         print "There is an error"
         throw error
